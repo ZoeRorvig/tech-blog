@@ -19,7 +19,7 @@ Post.init(
         type: DataTypes.DATE,
         allowNull: false,
       },
-      content: {
+      post_content: {
         type: DataTypes.TEXT,
         allowNull: false,
       },
@@ -38,3 +38,5 @@ Post.init(
       modelName: 'post',
     }
   );
+
+  module.exports = Post;
