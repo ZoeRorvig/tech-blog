@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  
+
   <nav>
     <a href="/">Home</a>
     <a href="/dashboard">Dashboard</a>
@@ -24,5 +24,8 @@
   </main>
 </body>
 
-</html>
+{{#if loggedIn}}
 <script src="/js/logout.js"></script>
+{{/if}}
+
+</html>
