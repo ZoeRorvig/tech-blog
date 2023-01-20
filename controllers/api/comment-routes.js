@@ -37,10 +37,15 @@ router.get('/:id', async (req, res) => {
     try {
         const commentData = await Comment.findByPk(req.params.id, {
             attributes: ['id', 'comment_date', 'comment_content', 'user_id', 'post_id'],
-            include: [{
-                model: User,
-                attributes: ['username'],
-            }],
+            include: [
+                {
+                    model: Post,
+                    attributes: ['title'],
+                },
+                {
+                    model: User,
+                    attributes: ['username'],
+                }],
         });
 
         res.status(200).json(commentData);
