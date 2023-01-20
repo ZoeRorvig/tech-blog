@@ -41,10 +41,10 @@ router.get('/:id', async (req, res) => {
             ],
         });
 
-        res.status(200).json(postData);
+        // res.status(200).json(postData);
 
-        // const comment = commentData.get({ plain: true });
-        // res.render('comment', comment);
+        const post = postData.get({ plain: true });
+        res.render('post', post);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
