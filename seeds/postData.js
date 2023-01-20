@@ -11,7 +11,7 @@ const postdata = [
     title: 'Difficult Project',
     post_content: 'This has been a difficult project... figuring out where everything', 
     post_date: 'June 21, 2021 17:00:00', 
-    user_id: 1,
+    user_id: 2,
   },
 ];
 

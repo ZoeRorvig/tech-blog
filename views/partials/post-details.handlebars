@@ -1,5 +1,7 @@
 <section>
-  <a href="/api/posts/{{id}}">
-    <header>{{title}}</header>
-  </a>
+    <header>
+      <a href="/api/posts/{{id}}">{{title}}</a>
+      {{user.username}} - {{format_date post_date}}
+    </header>
+    <p>{{post_content}}</p>
 </section>
