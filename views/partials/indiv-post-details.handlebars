@@ -1,5 +1,8 @@
 <section>
-    <header>{{title}}</header>
-    <p>{{post_content}}</p>
-    <footer>{{user.username}} - {{format_date post_date}}</footer>
+    <section>
+        <header>{{title}}</header>
+        <p>{{post_content}}</p>
+        <p>{{user.username}} - {{format_date created_at}}</p>
+    </section>
+    {{> comment-details}}
 </section>

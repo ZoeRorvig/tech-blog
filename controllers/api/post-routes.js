@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Post, Comment, User } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // GET all posts
 
@@ -15,12 +16,12 @@ router.get('/', async (req, res) => {
             ],
         });
 
-        res.status(200).json(postData);
+        // res.status(200).json(postData);
 
-        // const posts = postData.map((post) =>
-        //     post.get({ plain: true })
-        // );
-        // res.render('homepage', posts);
+        const posts = postData.map((post) =>
+            post.get({ plain: true })
+        );
+        res.render('homepage', posts);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -29,14 +30,23 @@ router.get('/', async (req, res) => {
 
 // GET one post
 
-router.get('/:id', async (req, res) => {
+router.get('/:id',  async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
-            attributes: ['id', 'title', 'created_at', 'post_content', 'user_id'],
+            attributes: ['id', 'title', 'post_content', 'created_at','user_id'],
             include: [
                 {
                     model: User,
-                    attributes: ['username'],
+                    attributes: ['username']
+                },
+                {
+                    model: Comment,
+                    attributes: ['id', 'comment_content', 'post_id', 'user_id', 'created_at'],
+                    include:
+                    {
+                        model: User,
+                        attributes: ['username']
+                    },
                 },
             ],
         });

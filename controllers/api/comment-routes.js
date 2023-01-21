@@ -19,12 +19,12 @@ router.get('/', async (req, res) => {
             ],
         });
 
-        res.status(200).json(commentData);
+        // res.status(200).json(commentData);
 
-        // const comments = commentData.map((comment) =>
-        //     comment.get({ plain: true })
-        // );
-        // res.render('homepage', comments);
+        const comments = commentData.map((comment) =>
+            comment.get({ plain: true })
+        );
+        res.render('individual-post', { comments, loggedIn: true });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -48,10 +48,10 @@ router.get('/:id', async (req, res) => {
                 }],
         });
 
-        res.status(200).json(commentData);
+        // res.status(200).json(commentData);
 
-        // const comment = commentData.get({ plain: true });
-        // res.render('comment', comment);
+        const comment = commentData.get({ plain: true });
+        res.render('comment', comment);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
