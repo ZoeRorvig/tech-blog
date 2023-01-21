@@ -4,10 +4,11 @@ const withAuth = require('../utils/auth');
 
 // get all posts for dashboard
 router.get('/', withAuth, async (req, res) => {
+    const userID = req.session.userId;
     try {
         const postData = await Post.findAll({
-            where: { user_id: req.session.userId },
-            attributes: ['id', 'title', 'post_content', 'post_date'],
+            where: { user_id: userID},
+            attributes: ['id', 'title', 'post_content', 'post_date','user_id'],
             include: [
                 {
                     model: User,
