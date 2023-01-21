@@ -6,7 +6,7 @@ const { Post, Comment, User } = require('../../models');
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
-            attributes: ['id', 'title', 'post_date', 'post_content', 'user_id'],
+            attributes: ['id', 'title', 'created_at', 'post_content', 'user_id'],
             include: [
                 {
                     model: User,
@@ -15,12 +15,12 @@ router.get('/', async (req, res) => {
             ],
         });
 
-        // res.status(200).json(postData);
+        res.status(200).json(postData);
 
-        const posts = postData.map((post) =>
-            post.get({ plain: true })
-        );
-        res.render('homepage', posts);
+        // const posts = postData.map((post) =>
+        //     post.get({ plain: true })
+        // );
+        // res.render('homepage', posts);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
-            attributes: ['id', 'title', 'post_date', 'post_content', 'user_id'],
+            attributes: ['id', 'title', 'created_at', 'post_content', 'user_id'],
             include: [
                 {
                     model: User,
@@ -52,17 +52,17 @@ router.get('/:id', async (req, res) => {
 });
 
 // New post
-
 router.post('/', async (req, res) => {
     try {
         const postData = await Post.create({
             title: req.body.title,
-            post_date: req.body.post_date,
+            created_at: req.body.created_at,
             post_content: req.body.post_content,
-            user_id: req.body.user_id,
+            user_id: req.session.userId,
         });
         res.status(200).json(postData)
     } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });

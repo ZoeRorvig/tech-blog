@@ -11,10 +11,10 @@ Comment.init(
         primaryKey: true,
         autoIncrement: true,
       },
-      comment_date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
+      // comment_date: {
+      //   type: DataTypes.DATE,
+      //   allowNull: false,
+      // },
       comment_content: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -36,6 +36,7 @@ Comment.init(
     },
     {
       sequelize,
+      timestamps: true,
       freezeTableName: true,
       underscored: true,
       modelName: 'comment',

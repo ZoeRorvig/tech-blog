@@ -8,7 +8,7 @@ router.get('/', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
             where: { user_id: userID},
-            attributes: ['id', 'title', 'post_content', 'post_date','user_id'],
+            attributes: ['id', 'title', 'post_content', 'created_at','user_id'],
             include: [
                 {
                     model: User,
@@ -16,7 +16,7 @@ router.get('/', withAuth, async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['id', 'comment_content', 'post_id', 'user_id', 'comment_date'],
+                    attributes: ['id', 'comment_content', 'post_id', 'user_id', 'created_at'],
                     include:
                     {
                         model: User,
@@ -38,5 +38,11 @@ router.get('/', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+router.get('/create', withAuth, (req, res) => {
+    res.render('new-post', {
+        loggedIn: req.session.loggedIn
+    })
+})
 
 module.exports = router;

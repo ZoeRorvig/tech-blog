@@ -6,7 +6,7 @@ const { Post, Comment, User } = require('../../models');
 router.get('/', async (req, res) => {
     try {
         const commentData = await Comment.findAll({
-            attributes: ['id', 'comment_date', 'comment_content', 'user_id', 'post_id'],
+            attributes: ['id', 'created_at', 'comment_content', 'user_id', 'post_id'],
             include: [
                 {
                     model: Post,
@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const commentData = await Comment.findByPk(req.params.id, {
-            attributes: ['id', 'comment_date', 'comment_content', 'user_id', 'post_id'],
+            attributes: ['id', 'created_at', 'comment_content', 'user_id', 'post_id'],
             include: [
                 {
                     model: Post,
@@ -63,7 +63,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const commentData = await Comment.create({
-            comment_date: req.body.comment_date,
+            created_at: req.body.created_at,
             comment_content: req.body.comment_content,
             user_id: req.body.user_id,
             post_id: req.body.post_id,

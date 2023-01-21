@@ -5,7 +5,7 @@ const { User, Post, Comment } = require('../models/');
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
-      attributes: ['id', 'title', 'post_content', 'post_date'],
+      attributes: ['id', 'title', 'post_content', 'created_at'],
       include: [
         {
           model: User,
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['id', 'comment_content', 'post_id', 'user_id', 'comment_date'],
+          attributes: ['id', 'comment_content', 'post_id', 'user_id', 'created_at'],
           include:
             {
               model: User,
@@ -32,6 +32,7 @@ router.get('/', async (req, res) => {
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
