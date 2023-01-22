@@ -3,13 +3,17 @@
         <header>{{title}}</header>
         <p>{{post_content}}</p>
         <p>{{user.username}} - {{format_date created_at}}</p>
+        <button type="submit" id="new-comment" class="btn">New Comment</button>
     </section>
     {{#each comments as |comment|}}
-        <section>
-            <header>
-                {{comment.user.username}} - {{format_date comment.created_at}}
-            </header>
-            <p>{{comment.comment_content}}</p>
-        </section>
+    <section>
+        <header>
+            {{comment.user.username}} - {{format_date comment.created_at}}
+        </header>
+        <p>{{comment.comment_content}}</p>
+    </section>
     {{/each}}
 </section>
+
+{{!--
+<script src="/js/createComment.js"></script> --}}
