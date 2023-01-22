@@ -74,8 +74,7 @@ router.post('/', withAuth, async (req, res) => {
             created_at: req.body.created_at,
             comment_content: req.body.comment_content,
             user_id: req.session.userId,
-            // post_id: req.body.post_id,
-            // TODO: fix the post_id
+            post_id: req.body.post_id,
         });
         res.status(200).json(commentData)
     } catch (err) {
