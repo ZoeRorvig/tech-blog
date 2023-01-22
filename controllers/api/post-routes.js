@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 
 // GET one post
 
-router.get('/:id',  async (req, res) => {
+router.get('/:id', withAuth,  async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
             attributes: ['id', 'title', 'post_content', 'created_at','user_id'],
