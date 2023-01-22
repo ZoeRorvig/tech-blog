@@ -45,6 +45,39 @@ router.get('/create', withAuth, (req, res) => {
     res.render('new-post', {
         loggedIn: req.session.loggedIn
     })
-})
+});
+
+// GET one post
+
+router.get('/:id', withAuth,  async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id, {
+            attributes: ['id', 'title', 'post_content', 'created_at','user_id'],
+            include: [
+                {
+                    model: User,
+                    attributes: ['username']
+                },
+                {
+                    model: Comment,
+                    attributes: ['id', 'comment_content', 'post_id', 'user_id', 'created_at'],
+                    include:
+                    {
+                        model: User,
+                        attributes: ['username']
+                    },
+                },
+            ],
+        });
+
+        // res.status(200).json(postData);
+
+        const post = postData.get({ plain: true });
+        res.render('dashboard-post', { post, loggedIn: true });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;
