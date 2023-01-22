@@ -4,5 +4,12 @@
         <p>{{post_content}}</p>
         <p>{{user.username}} - {{format_date created_at}}</p>
     </section>
-    {{> comment-details}}
+    {{#each comments as |comment|}}
+        <section>
+            <header>
+                {{comment.user.username}} - {{format_date comment.created_at}}
+            </header>
+            <p>{{comment.comment_content}}</p>
+        </section>
+    {{/each}}
 </section>

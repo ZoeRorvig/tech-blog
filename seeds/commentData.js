@@ -13,6 +13,12 @@ const commentdata = [
     user_id: 1,
     post_id: 2,
   },
+  {
+    comment_content: 'Maybe it works?', 
+    // comment_date: '1/20/2023', 
+    user_id: 2,
+    post_id: 2,
+  },
 ];
 
 const seedComments = () => Comment.bulkCreate(commentdata);
