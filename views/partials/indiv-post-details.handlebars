@@ -5,9 +5,9 @@
         <p>{{user.username}} - {{format_date created_at}}</p>
         <form id="new-comment-form" class="card-body">
             <div>
-                <input type="text" id="content-input" placeholder="Comment on this post!"/>
-                <button type="submit" id="new-comment-btn" class="btn">Submit</button>
+                <textarea name="comment" id="content-input" cols="30" rows="1" placeholder="Comment on this post!"></textarea>
             </div>
+            <button type="submit" id="new-comment-btn" class="btn">Submit</button>
         </form>
     </section>
     {{#each comments as |comment|}}
