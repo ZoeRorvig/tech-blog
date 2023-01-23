@@ -61,6 +61,28 @@ router.get('/:id', withAuth, async (req, res) => {
     }
 });
 
+// update post
+router.put('/:id', withAuth, async (req, res) => {
+    try {
+      const postData = await Post.update(
+        {
+          title: req.body.title,
+          post_content: req.body.post_content,
+        },
+        {
+          where: {
+            id: req.params.id,
+          },
+        }
+      );
+
+      res.json(postData);
+    } catch (err) {
+        console.log(err);
+      res.status(500).json(err);
+    }
+  });
+
 // delete post
 router.delete('/:id', async (req, res) => {
     try {

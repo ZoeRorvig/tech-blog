@@ -1,12 +1,16 @@
 <section>
-    <section>
-        <header>
-            <h1>{{title}}</h1>
-        </header>
-        <p>{{post_content}}</p>
-        <p>{{user.username}} - {{format_date created_at}}</p>
+    <div>
+        <h3>Edit Post</h3>
+        <form>
+            <label for="title">Title</label>
+            <input name="title" id="title-input" type="text" value="{{title}}" />
+            <label for="post_content">Content</label>
+            <input name="post_content" id="content-input" type="text" value="{{post_content}}" />
+        </form>
         <button type="submit" id="delete-btn" class="btn">Delete</button>
         <button type="submit" id="update-btn" class="btn">Update</button>
-    </section>
+    </div>
+</section>
 
 <script src="/js/deletePost.js"></script>
+<script src="/js/updatePost.js"></script>
