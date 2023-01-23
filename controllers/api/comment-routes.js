@@ -59,14 +59,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// router.get('/new', withAuth, (req, res) => {
-//     console.log('hey');
-//     res.render('new-comment', {
-//         Post,
-//         loggedIn: req.session.loggedIn
-//     })
-// });
-
 // Post new comment
 router.post('/', withAuth, async (req, res) => {
     try {
