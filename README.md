@@ -19,6 +19,27 @@ Features Include:
 
 ## Visuals 
 
-The following is a screenshot of the main application:
+The following is a screenshot of the home page:
 
-![screenshot](#)
+![screenshot](./images/home-page.PNG)
+
+The following is a screenshot of the login page:
+
+![screenshot](./images/login.PNG))
+
+The following is a screenshot of an individual post:
+
+![screenshot](./images/individual-post.PNG)
+
+The following is a screenshot of the form to create a new post:
+
+![screenshot](./images/new-post.PNG)
+
+The following is a screenshot of the dashboard:
+
+![screenshot](./images/dashboard.PNG)
+
+The following is a screenshot of the page to update or delete personal posts:
+
+![screenshot](./images/update-or-delete.PNG)
+
