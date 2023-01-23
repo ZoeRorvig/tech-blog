@@ -30,10 +30,10 @@ router.get('/', async (req, res) => {
 
 // GET one post
 
-router.get('/:id', withAuth,  async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
-            attributes: ['id', 'title', 'post_content', 'created_at','user_id'],
+            attributes: ['id', 'title', 'post_content', 'created_at', 'user_id'],
             include: [
                 {
                     model: User,
@@ -58,6 +58,17 @@ router.get('/:id', withAuth,  async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
+    }
+});
+
+// delete post
+router.delete('/:id', async (req, res) => {
+    try {
+        const postData = await Post.destroy({ where: { id: req.params.id } });
+        res.json(postData);
+    } catch (err) {
+        console.error(err);
+        res.json(err);
     }
 });
 
